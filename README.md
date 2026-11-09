@@ -87,6 +87,4 @@ flowchart TD
     K --> L["Model Evaluation & Comparison"]
     L --> M["Feature Importance"]
     M --> N["Final Model & Conclusions"]
-```
-    
-![Project flowchart](flowchart.png)      
+```   
