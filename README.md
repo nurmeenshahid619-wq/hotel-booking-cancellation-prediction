@@ -20,40 +20,41 @@ This data set contains booking information for a city hotel and a resort hotel, 
 1. Open notebook in Google Collab, Jupyter Lab or Jupyter Notebook.
 2. Run all cells from top to bottom in a new session.
 3. The dataset is downloaded using 'kagglehub', so internet access is a necessary requirement.
-4. Requirements: 'numpy', 'pandas', 'seaborn', 'matplotlib', 'scipy', 'scikit-learn', 'kagglehub' are all preinstalled in the notebook. 
-5. 'RANDOM_STATE=42' is set for reproducibility
+4. Requirements: 'numpy', 'pandas', 'seaborn', 'matplotlib', 'scipy', 'scikit-learn', are all preinstalled libraries in the notebook.
+5. 'pip install kagglehub' is not installed by default only.
+6. 'RANDOM_STATE=42' is set for reproducibility
 
 # 4. Pipeline: (Phase 1)
-### Section 1, 2 and 3: 
+### Section 1: 
 - Download the data
 - Validate the schema
 - inspect distributions
 - Raw data stays in df_raw.
 
-### section 2, 3:
+### section 2:
 -2015-2016 for train/validation (78,703 rows), 2017 for test (40,687 rows).
 
-### section 4, 5:
+### section 3:
 - fill missing values
 - keep 26.8% exact duplicates
 - CAP extreme ADR
 - Fix categories
 
-### section 6:
+### section 4:
 - Build 'total_nights', 'total_guests', 'is_family', 'has_agent' and others.
 - Threshold comes from 2015-2016 only.
 
-### section 7 (7.1 to 7.3):
+### section 5:
 - Classify every field by when it is known.
 - Then, define feature sets A, B and C.
 
-### section 7 (7.3):
+### section 6:
 - impute 'log1p'
 - scale and one hot encoder
 - fit on 2015-2016
 - transform on 2017
 
-### section 8:
+### section 7:
 - Cancellation rate with sample sizes and 95% Wilson intervals, plus 2016 vs 2017 drift
 
 # Leakage Audit Summary
