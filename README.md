@@ -24,36 +24,60 @@ This data set contains booking information for a city hotel and a resort hotel, 
 5. 'RANDOM_STATE=42' is set for reproducibility
 
 # 4. Pipeline: (Phase 1)
-## Section 1, 2 and 3: 
+### Section 1, 2 and 3: 
 - Download the data
 - Validate the schema
 - inspect distributions
 - Raw data stays in df_raw.
 
-## section 2, 3:
+### section 2, 3:
 -2015-2016 for train/validation (78,703 rows), 2017 for test (40,687 rows).
 
-## section 4, 5:
+### section 4, 5:
 - fill missing values
 - keep 26.8% exact duplicates
 - CAP extreme ADR
 - Fix categories
 
-## section 6:
+### section 6:
 - Build 'total_nights', 'total_guests', 'is_family', 'has_agent' and others.
 - Threshold comes from 2015-2016 only.
 
-## section 7 (7.1 to 7.3):
+### section 7 (7.1 to 7.3):
 - Classify every field by when it is known.
 - Then, define feature sets A, B and C.
 
-## section 7 (7.3):
+### section 7 (7.3):
 - impute 'log1p'
 - scale and one hot encoder
 - fit on 2015-2016
 - transform on 2017
 
-# section 8:
+### section 8:
 - Cancellation rate with sample sizes and 95% Wilson intervals, plus 2016 vs 2017 drift
 
-   
+# Leakage Audit Summary
+- Excluded: 'reservation_status', 'reservation_status_date', 'assigned-room-type'
+- Ambiguous: 'booking_changes', 'days_in_waiting_list', 'required_car_parking_space', 'total_of_special_requests'
+- Candidate, tested with and without: 'adr', 'deposit_type'
+- Target: 'is_cancelled'
+- Not a predictor: 'arrival_date_year'
+
+# Key Phase 1 Findings
+1. Because of class imbalance, the accuracy will be a misleading evaluation because it will always predict the dominant class in this binary classification ('not_cancelled'). Thus, PR-AUC is the primary metric.
+2. City hotel cancels 41.7% and resort hotels on the other hand cancels 27.8%.
+3. Cancellations rise from 9.6% (0-7 days) to 67.7% (>365 days) in both hotels of Portugal.
+4. Furthermore, Groups cancel at 61.1% : The direct ones 15.3%, on the other hand Corporate ones are low at 18.7%. Lead time and segment interact strongly .
+5. Moreover, non refund bookings are cancelled 99.4%  of the time, which is implausible for a refund penalty policy and suggests a recording artefacts.
+6. In special requests, almost 47.7% cancellations with none and 5.0% with five.
+7. Lastly, from January to August the overall rate rose from 34.7% to 38.7% with shifts in the segment mix, ADR and domestic share.
+
+
+```mermaid
+flowchart TD
+    A[Acquire data and validate schema] --> B[Initial exploration]
+    B --> C[Dates and chronological split]
+    C --> D[Data cleaning]
+```
+
+![Project flowchart](flowchart.png)      
