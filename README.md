@@ -72,7 +72,7 @@ This data set contains booking information for a city hotel and a resort hotel, 
 6. In special requests, almost 47.7% cancellations with none and 5.0% with five.
 7. Lastly, from January to August the overall rate rose from 34.7% to 38.7% with shifts in the segment mix, ADR and domestic share.
 
-
+```mermaid
 flowchart TD
     A["Hotel Booking Dataset"] --> B["Data Acquisition & Inspection"]
     B --> C["Data Cleaning"]
@@ -81,12 +81,12 @@ flowchart TD
     E --> F["Feature Selection"]
     F --> G["Preprocessing"]
     G --> H["Exploratory Data Analysis"]
-
     H --> I["Phase 1 Completed"]
     I --> J["Phase 2: Model Training"]
     J --> K["Chronological Validation"]
     K --> L["Model Evaluation & Comparison"]
     L --> M["Feature Importance"]
     M --> N["Final Model & Conclusions"]
+```
     
 ![Project flowchart](flowchart.png)      
