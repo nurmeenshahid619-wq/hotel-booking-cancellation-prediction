@@ -38,37 +38,16 @@ This data set contains booking information for a city hotel and a resort hotel, 
 6. 'RANDOM_STATE=42' is set for reproducibility
 
 # 4. Pipeline: (Phase 1)
-### Section 1: 
-- Download the data
-- Validate the schema
-- inspect distributions
-- Raw data stays in df_raw.
-
-### section 2:
--2015-2016 for train/validation (78,703 rows), 2017 for test (40,687 rows).
-
-### section 3:
-- fill missing values
-- keep 26.8% exact duplicates
-- CAP extreme ADR
-- Fix categories
-
-### section 4:
-- Build 'total_nights', 'total_guests', 'is_family', 'has_agent' and others.
-- Threshold comes from 2015-2016 only.
-
-### section 5:
-- Classify every field by when it is known.
-- Then, define feature sets A, B and C.
-
-### section 6:
-- impute 'log1p'
-- scale and one hot encoder
-- fit on 2015-2016
-- transform on 2017
-
-### section 7:
-- Cancellation rate with sample sizes and 95% Wilson intervals, plus 2016 vs 2017 drift
+| Step                   | Main Objective                                     | Work Performed                                |
+|------------------------|----------------------------------------------------|-----------------------------------------------|
+| 1. Data Acquisition    | Data Objects and attributes                        | Download, inspect dataset and retain 'df_raw' |
+| 2. Chronological split | Temporal Validation                                | (2015-2016) training/validation, (2017) test  |
+| 3. Data Cleaning       | Data quality, missing values, outliers, noisy data | missing values, duplicate records, outlier through IQR, check categorical consistency |  
+| 4. Data Transformation | Attribute construction and discretization          | Constructing booking level attributes and group lead time in interpretable business intervals |
+| 5. Attribute Selection | Attribute subset selection , redundancy, leakage audit | Retain reservation time candidates, identity ambiguous fields, exclude outcome revealing fields, and assess redundancy |
+| 6. Normalization and binarization | Z score normalization and 1 hot encoding | Log transformation, impute missing values, standardize, quantitative attributes, and encode nominal attributes, fit preprocessing on 2015-2016 only |
+| 7. EDA | Descriptive and Diagnostic analytics | Examine cancellation patterns, segment differences, associations, and changes over time |
+| 8. Phase 2 | Predictive and Prescriptive analytics | Train and compare models, evaluate risk scores, and study cost aware intervention policies |
 
 # Leakage Audit Summary
 - Excluded: 'reservation_status', 'reservation_status_date', 'assigned-room-type'
