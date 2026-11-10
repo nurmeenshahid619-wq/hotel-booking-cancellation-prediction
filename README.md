@@ -1,13 +1,14 @@
 # hotel-booking-cancellation-prediction
 ## Predicting Booking Cancellations at Reservation Time: A Temporal Validation Study with Leakage Control on Hotel Demand Data.
-### Course: Data Science Tools & Technologies
-### Instructor: Dr. Asma Ahmed | TA: Burhan Hadi Butt
+### Course: DS5002: Data Science Tools & Technologies (NUCES)
+### Instructor: Dr. Asma Ahmad | TA: Burhan Hadi Butt
 ### Group: Nurmeen Shahid (26L-8010), Ayesha Mazher (26L-8005)
 
 ## 1. Overview
-Dealing with late cancellations is one of the most frustrating parts of a business, especially for hotels because of the number of preparations and resources that goes in the preparation to welcome a guest. Thus, hotels losses significant revenue when bookings are cancelled late. In this context, this project asks;
-### Can information available at reservation time help identify hotel bookings at elevated risk of cancellation, when models are trained on earlier bookings, tested on later ones, and every outcome revealing variable is excluded?
-This repository currently contains Phase 1 (data acquisition, cleaning, leakage audit, feature engineering, chronological split design and exploratory analysis)
+Dealing with late cancellations is one of the most frustrating parts of a business, especially for hotels because of the number of preparations and resources used for a single guest. In this regard, hotels losses significant revenue when bookings are cancelled late. Therefore, this project asks;
+'Can information available at reservation time actually help identify hotel bookings at elevated risk of cancellation, when models are trained on earlier bookings, tested on later ones, and every outcome revealing variable is excluded?'
+
+Currently Phase 1 (data acquisition, cleaning, leakage audit, feature engineering, chronological split design and exploratory analysis) is completed. 
 Furthermore, model training, cost analysis and evaluation will be done in phase 2.
 
 # 2. Dataset
@@ -16,7 +17,19 @@ Furthermore, model training, cost analysis and evaluation will be done in phase 
 The data is originally from the article Hotel Booking Demand Datasets, written by Nuno Antonio, Ana Almeida, and Luis Nunes for Data in Brief, Volume 22, February 2019.
 This data set contains booking information for a city hotel and a resort hotel, and includes information such as when the booking was made, length of stay, the number of adults, children, and/or babies, and the number of available parking spaces, among other things. 
 
-# 3. How To Run
+# 3. Problem Definition
+| Component          | Description                                                      |
+|--------------------|------------------------------------------------------------------|
+| Task               | Supervised Binary classification, Booking level Churn Prediction |
+| Class label        | 'is_canceled' (qualitative, asymmetric binary attribute)         |
+| Positive class (1) | cancelled booking, or no show                                    |
+| Negative class (0) | Checked out booking                                              |
+| Prediction Point   | Reservation Time                                                 |
+| Main Challenge     | Preventing Data Leakage and evaluating on a later time period    |
+| Phase 1 analysis   | Descriptive and Diagnostic analysis                              |
+| Phase 2 analysis   | Predictive and Prescriptive analysis                             |
+
+# 4. How To Run
 1. Open notebook in Google Collab, Jupyter Lab or Jupyter Notebook.
 2. Run all cells from top to bottom in a new session.
 3. The dataset is downloaded using 'kagglehub', so internet access is a necessary requirement.
