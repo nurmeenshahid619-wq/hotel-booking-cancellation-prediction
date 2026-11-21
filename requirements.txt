@@ -1,0 +1,16 @@
+# Requirements for Term_Project_final_8005_8010.ipynb
+# Python 3.14 (version the notebook was run with)
+# Versions are minimums; only kagglehub's version was recorded in the notebook output.
+
+numpy
+pandas>=3.0
+scipy
+matplotlib
+seaborn
+scikit-learn
+xgboost
+shap
+joblib
+kagglehub>=1.0.3
+jupyter
+ipykernel
