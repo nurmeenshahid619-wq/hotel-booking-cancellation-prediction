@@ -16,8 +16,7 @@
 8. Part1: Data preparation, Leakage audit and EDA
 9. Part 2: Modelling and Evaluation
 10. Answers to the research question
-11. Limitations
-12. References
+11. References
 
 ---
 
@@ -276,7 +275,7 @@ Same tuned XGBoost on all six feature sets:
 | RQ3 Cost | Under the assumed costs, the model saves 24.8% of the cancellation loss, compared with 24.4% for acting on every booking. It is clearly better and safer when actions are costly or work less well. |
 | RQ4 Factors | Country, lead time, customer type and market segment matter most. Their ranking is stable between earlier and later periods (rank correlation 0.84), and a model trained on one hotel works on the other with a small loss in lift. |
 
-# 12. References
+# 11. References
 1. Antonio, N., Almeida, A., & Nunes, L. (2019). Hotel booking demand datasets. Data in Brief, 22, 41-49.
 2. Gaudreault, J. G., & Branco, P. (2024). Empirical analysis of performance assessment for imbalanced classification. Machine Learning, 113, 5533-5575.
 3. Kmiecik, M., & Antonio, N. (2026). Cancel, rebook, save: Revenue leakage from price cuts in hotels. International Journal of Hospitality Management, 135.
